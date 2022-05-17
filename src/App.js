@@ -1,15 +1,20 @@
 //应用的根组件
 
 import React ,{Component} from 'react'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
-import { Button,message } from 'antd';
+import Login from './pages/login/login';
+import Admin from './pages/admin/admin';
 export default class App extends Component{
-    handleClick=()=> {
-        message.success('成功了----');
-    }
-    render() {
-        return <Button type="primary" onClick= {this.handleClick}>测试antd</Button>
-        
-    }
 
+    render() {
+        return (          
+                <BrowserRouter>
+                <Routes>{/**只匹配一个路由 */}
+                    <Route path ='/login' element={<Login /> } />
+                    <Route path ='/' element={<Admin />} />
+                </Routes>
+                </BrowserRouter>          
+        )       
+    }
 }
